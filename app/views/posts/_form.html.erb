@@ -1,0 +1,16 @@
+<%= form_with model: @post, local: true do |f|%>
+
+  <div class="field">
+    <%= f.label :text, "コメントを書こう" %><br />
+    <%= f.text_area :text, class: :form__text, id:"prototype_catch_copy" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :image, "画像を投稿しよう" %><br />
+    <%= f.file_field :image, id:"prototype_image" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
