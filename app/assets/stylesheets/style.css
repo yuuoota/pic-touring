@@ -118,6 +118,21 @@ a {
   cursor: pointer;
 }
 
+#previews {
+  display: flex;
+}
+
+.preview{
+  margin-right: 30px;
+}
+
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
 /* メイン */
 
 .greeting{
