@@ -17,6 +17,9 @@
           <p class="detail__message">
             <%= @post.text %>
           </p>
+          <p class="detail__message">
+            <%= @post.spots&.first&.spot_name %>
+          </p>
         </div>
     </div>
   </div>

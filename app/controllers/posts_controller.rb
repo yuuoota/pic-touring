@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     post_attributes = @post.attributes
     @post_spot = PostSpot.new(post_attributes)
+    @post_spot.spot_name = @post.spots&.first&.spot_name
   end
 
   def update
@@ -44,6 +45,6 @@ class PostsController < ApplicationController
   private
 
   def post_spot_params
-    params.require(:post_spot).permit(:text, {images: []}).merge(user_id: current_user.id)
+    params.require(:post_spot).permit(:text, :spot_name, {images: []}).merge(user_id: current_user.id)
   end
 end
