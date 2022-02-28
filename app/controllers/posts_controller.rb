@@ -40,6 +40,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    spot = Spot.where(['spot_name LIKE ?', "%#{params[:keyword]}%"])
+    render json:{ keyword: spot }
+  end
+
 
 
   private
