@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many_attached :images
-  validates :images, presence: true
-  validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
+  has_many :post_spot_relations, dependent: :delete_all
+  has_many :spots, through: :post_spot_relations
 end

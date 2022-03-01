@@ -2,8 +2,7 @@
   <div class="inner">
     <% if user_signed_in? %>
       <div class="greeting">
-        <%= "こんにちは、" %>
-
+        <%= "こんにちは"%><%= current_user.nickname %><%= "さん" %>
       </div>
     <% end %>
     <div class="card__wrapper">
