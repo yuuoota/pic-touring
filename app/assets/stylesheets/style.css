@@ -267,6 +267,11 @@ a {
   text-decoration: underline;
 }
 
+#map {
+  height: 500px;
+  width: 500px;
+}
+
 /* ユーザーページ */
 .user__wrapper{
   min-height: calc(100vh - 161px);
