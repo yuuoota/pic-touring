@@ -10,6 +10,8 @@ require("channels")
 require("../preview")
 require("../spot")
 require("../map")
+require("jquery")
+require("../slick")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

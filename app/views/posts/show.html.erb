@@ -7,11 +7,13 @@
           <%= link_to "削除する", post_path(@post.id), method: :delete, class: :prototype__btn %>
         </div>
       <% end %>
+      <div class="slider">
       <% @post.images.each do |image| %>
       <div class="prototype__image">
-        <%= image_tag image %>
+          <%= image_tag image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0") %>
       </div>
       <% end %>
+      </div>
         <div class="prototype__detail">
           <p class="detail__title"></p>
           <p class="detail__message">
@@ -23,12 +25,6 @@
         </div>
     </div>
 
-    <h2>gmap</h2>
-
-<input id="address" type="textbox" value="GeekSalon">
-<input id="search-btn" type="button" value="Encode">
-<div id="display"></div>
-
-<div id='map'></div>
+  <div id='map'></div>
 
 </main>

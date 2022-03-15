@@ -19,6 +19,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    gon.spot = @post.images.map do |image|
+      {"lat" => image.metadata["latitude"], "lng" => image.metadata["longitude"]}
+    end
   end
 
   def edit
