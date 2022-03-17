@@ -9,7 +9,7 @@
       <% end %>
       <div class="slider">
       <% @post.images.each do |image| %>
-      <div class="prototype__image">
+      <div class="image">
           <%= image_tag image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0") %>
       </div>
       <% end %>

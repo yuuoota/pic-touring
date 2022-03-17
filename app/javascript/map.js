@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var marker = [];
     var spotData = gon.spot;
     var infoWindow = [];
+    var currentInfoWindow = null;
     for (var i = 0; i < spotData.length; i++){
       if (spotData[i]['lat'] !== null && spotData[i]['lng'] !== null){
         geocoder = new google.maps.Geocoder()
@@ -40,15 +41,39 @@ document.addEventListener('DOMContentLoaded', function(){
           map: map
         });
         infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-          content: '<div class="info_window">' + "&#931" + [i + 2] + '</div>'
+          content: '<div class="info_window">' + "画像のスポット" + '</div>'
         });
+        if(i == 0 && marker[i]){
+          infoWindow[i].open(map, marker[i]);
+          currentInfoWindow = infoWindow[i];
+        }
+        changeEvent(i);
         markerEvent(i); // マーカーにクリックイベントを追加
       };
     };
+
+    function changeEvent(i) {
+      $('.slider').on('afterChange', function() {
+        if (currentInfoWindow) {
+          currentInfoWindow.close();
+        };
+        var currentSlide = $('.slider').slick('slickCurrentSlide');
+        if(typeof marker[currentSlide] != 'undefined'){
+          infoWindow[currentSlide].open(map, marker[currentSlide]);
+          currentInfoWindow = infoWindow[currentSlide];
+        };
+      });
+    };  
+
     // マーカーにクリックイベントを追加
     function markerEvent(i) {
       marker[i].addListener('click', function() { // マーカーをクリックしたとき
-      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+        if (currentInfoWindow) {
+          currentInfoWindow.close();
+        };
+        infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+        $('.slider').slick('slickGoTo', i, false);
+        currentInfoWindow = infoWindow[i];
       });
     };
   };

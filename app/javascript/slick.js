@@ -3,4 +3,7 @@ $(function() {
     dots: true,
     infinite: false
   });
+  $('.slider').on('afterChange', function() {
+    var currentSlide = $('.slider').slick('slickCurrentSlide');
+  });
 });
