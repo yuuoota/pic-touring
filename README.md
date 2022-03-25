@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pic-Touring
+ 
+# 概要
+ 
+ツーリングしたときに撮影した写真を投稿することができます。
+投稿した写真には位置情報をつけておくとより便利です。アプリで投稿した写真を開くと撮影した位置がマップ上に自動で表示されます。
+ 
+# 開発環境
+ 
+ruby 2.6.5
+Rails 6.0.4.6
+ 
+# テーブル設計
 
-Things you may want to cover:
+## Users
 
-* Ruby version
+|Column            |Type  |Options                  |
+|------------------|------|-------------------------|
+|nickname          |string|null: false              |
+|email             |string|null: false, unique: true|
+|encrypted_password|string|null: false              |
 
-* System dependencies
+### Association
+- has_many :posts
 
-* Configuration
+## Posts
 
-* Database creation
+|Column         |Type       |Options                       |
+|---------------|-----------|------------------------------|
+|text           |text       |null: false                   |
+|user           |references |null: false, foreign_key: true|
 
-* Database initialization
+### Association
+- belongs_to :user
+- has_many :post_spot_relations
+- has_many :spots, through: :post_spot_relations
 
-* How to run the test suite
+## Spots
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column    |Type      |Options     |
+|----------|----------|------------|
+|spot_name |text      |null: false |
 
-* Deployment instructions
+### Association
+- has_many :post_spot_relations
+- has_many :posts, through: :post_spot_relations
 
-* ...
+## Post_spot_relations
+
+|Column        |Type      |Options                       |
+|--------------|----------|------------------------------|
+|post          |references|null: false, foreign_key: true|
+|spot          |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :post
+- belongs_to :spot
+
