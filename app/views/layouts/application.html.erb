@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
     <%= include_gon %>
     <%= javascript_pack_tag 'application' %>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -19,7 +20,8 @@
       <div class="inner">
         <div class="nav">
           <div class="nav__left">
-            <%= link_to image_tag("logo.png", class: :logo), root_path %>
+            <%= link_to image_tag("motorcycle.png", class: :logo), root_path %>
+            <%= link_to "Pic-Touring", root_path, class: :app_title %>
           </div>
           <% if user_signed_in? %>
             <div class="nav__right">

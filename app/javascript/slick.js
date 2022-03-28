@@ -1,9 +1,7 @@
 $(function() {
   $('.slider').slick({
     dots: true,
+    arrows: true, 
     infinite: false
-  });
-  $('.slider').on('afterChange', function() {
-    var currentSlide = $('.slider').slick('slickCurrentSlide');
   });
 });

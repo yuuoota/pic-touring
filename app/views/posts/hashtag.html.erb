@@ -2,11 +2,11 @@
   <div class="inner">
     <% if user_signed_in? %>
       <div class="greeting">
-        <%= "ようこそ"%><%= current_user.nickname %><%= "さん" %>
+        <%= "##{@posts[:spot]}の投稿" %>
       </div>
     <% end %>
     <div class="card__wrapper">
-      <%= render partial: 'post', collection: @posts %>
+      <%= render partial: 'post', collection: @posts[:posts] %>
     </div>
   </div>
 </main>

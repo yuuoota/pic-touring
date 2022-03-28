@@ -19,8 +19,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    gon.spot = @post.images.map do |image|
+    gon.lat_lng = @post.images.map do |image|
       {"lat" => image.metadata["latitude"], "lng" => image.metadata["longitude"]}
+    end
+    gon.spots = @post.spots.map do |spot|
+      spot[:spot_name]
     end
   end
 
@@ -28,7 +31,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     post_attributes = @post.attributes
     @post_spot = PostSpot.new(post_attributes)
-    @post_spot.spot_name = @post.spots&.first&.spot_name
+    spots_array = @post.spots.map do |spot|
+      "##{spot.spot_name}"
+    end
+    @post_spot.spot_name = spots_array.join
   end
 
   def update
@@ -53,6 +59,11 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to root_path
+  end
+
+  def hashtag
+    @spot = Spot.find_by(spot_name: params[:name])
+    @posts = {posts: @spot.posts, spot: @spot.spot_name}
   end
 
   private
