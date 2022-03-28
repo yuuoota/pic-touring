@@ -37,8 +37,8 @@ a {
 /* ヘッダー */
 
 .header {
-  background-color: #f1f8fe;
-  margin-bottom: 48px;
+  background-color: #EEFFFF;
+  margin-bottom: 10px;
   padding: 20px 0;
 
 }
@@ -52,29 +52,33 @@ a {
   justify-content: space-between;
 }
 .logo {
-  width: 200px;
+  width: 60px;
+  height: 45px;
+}
+.app_title {
+  font-size: 2.3em;
 }
 .nav__btn{
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
-  color: #87CEFA;
+  color: #4689FF;
   text-decoration: none;
   user-select: none;
-  border: 1px #87CEFA solid;
+  border: 1px #4689FF solid;
   border-radius: 3px;
   transition: 0.4s ease;
 }
 .nav__btn:hover{
   color: #fff;
-  background: #87CEFA;
+  background: #4689FF;
 }
 
 .nav__logout{
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
-  color: #87CEFA;
+  color: #4689FF;
   text-decoration: none;
   user-select: none;
 }
@@ -196,23 +200,16 @@ a {
 .prototype__wrapper{
   min-height: calc(100vh - 161px);
 }
-.prototype__hedding{
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+.pic__map{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
-.prototype__user{
-  display: block;
-  font-size: 16px;
-  color: #999;
-  text-align: center;
-  text-decoration: underline;
-}
-.image{
-  width: 40%;
-  margin: 0 auto;
-  padding: 16px 0;
-}
+.slider{
+	width: 50%;
+	margin:0 auto;
+  }
+
 .prototype__detail{
   display: flex;
   align-items: center;
@@ -227,6 +224,7 @@ a {
   display: flex;
   justify-content: center;
   padding-top: 16px;
+  margin-bottom: 10px;
 }
 .prototype__btn{
   display: block;
@@ -265,10 +263,20 @@ a {
   color: #999;
   text-decoration: underline;
 }
+.spots__name {
+  margin-top: 10px;
+  display: flex;
+}
+.hashspot__name {
+  color: #3399FF;
+}
 
 #map {
-  height: 500px;
-  width: 500px;
+  height: 480px;
+  width: 480px;
+}
+.info_window {
+  font-weight: bold;
 }
 
 /* ユーザーページ */
@@ -305,7 +313,7 @@ a {
 /* フッター */
 
 .footer {
-  background-color: #999;
+  background-color: #EEFFFF;
   padding: 10px 0;
 }
 .copyright {

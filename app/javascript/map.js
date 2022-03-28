@@ -3,11 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
   const mapPlace = document.getElementById('map');
   // 詳細ページのフォームがないならここで終了
   if (!mapPlace) return null;
-  console.log("map.jsが読み込まれました");
-  console.log(gon.spot);
   // Create the script tag, set the appropriate attributes
   var script = document.createElement('script');
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA6FSwMZ7Kx1B8kzvOCxyMd_rTt3rzR2HI&callback=initMap';
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.MAPS_API_KEY}&callback=initMap`;
   script.async = true;
   // Append the 'script' element to 'head'
   document.head.appendChild(script);
@@ -16,41 +14,68 @@ document.addEventListener('DOMContentLoaded', function(){
   window.initMap = function() {
     var map;
     var marker = [];
-    var spotData = gon.spot;
+    var latLng;
+    var spotData = gon.lat_lng;
     var infoWindow = [];
     var currentInfoWindow = null;
-    for (var i = 0; i < spotData.length; i++){
-      if (spotData[i]['lat'] !== null && spotData[i]['lng'] !== null){
-        geocoder = new google.maps.Geocoder()
-        var lat = spotData[i]['lat'];
-        var lng = spotData[i]['lng'];
-
-        map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: lat, lng: lng},
-        zoom: 12,
-        });
-        break;
-      };
-    };
+    var count = 0;
+ 
+    map = new google.maps.Map(document.getElementById('map'));
+    var bounds = new google.maps.LatLngBounds();
 
     for (var i = 0; i < spotData.length; i++){
       if (spotData[i]['lat'] !== null && spotData[i]['lng'] !== null){
-        markerLatLng = new google.maps.LatLng({lat: spotData[i]['lat'], lng: spotData[i]['lng']});
+        latLng = new google.maps.LatLng({lat: spotData[i]['lat'], lng: spotData[i]['lng']});
+        bounds.extend(latLng);
         marker[i] = new google.maps.Marker({
-          position:  markerLatLng,
+          position:  latLng,
           map: map
         });
         infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-          content: '<div class="info_window">' + "画像のスポット" + '</div>'
-        });
+          content: '<div class="info_window">' + "写真の場所" + '</div>'
+        }); 
         if(i == 0 && marker[i]){
           infoWindow[i].open(map, marker[i]);
           currentInfoWindow = infoWindow[i];
-        }
+        };
         changeEvent(i);
         markerEvent(i); // マーカーにクリックイベントを追加
+        count += 1;
       };
     };
+
+    if (count == 0){
+      var marker = [];
+      var latLng = [];
+      var myLatLng; 
+      spotData = gon.spots;
+      var geocoder = new google.maps.Geocoder();
+
+      geocode(after_geocode);
+      function geocode(callback){
+        var cRef = spotData.length;
+        for (var i = 0; i < spotData.length; i++) {
+            (function (i) { 
+                geocoder.geocode({'address': spotData[i]}, 
+                    function(results, status) { // 結果
+                        if (status === google.maps.GeocoderStatus.OK) { // ステータスがOKの場合
+                            latLng[i]=results[0].geometry.location;// マーカーを立てる位置をセット
+                            marker[i] = new google.maps.Marker({
+                                position: results[0].geometry.location, // マーカーを立てる位置を指定
+                                map: map // マーカーを立てる地図を指定
+                            });
+                        } else { // 失敗した場合
+                        }//if文の終了。ifは文なので;はいらない
+                        if (--cRef <= 0) {
+                            callback();//全て取得できたらafter_geocode実行
+                        }
+                    }//function(results, status)の終了
+                );//geocoder.geocodeの終了
+            }) (i);
+        };//for文の終了
+      };//function geocode終了
+    };
+    map.fitBounds(bounds);
 
     function changeEvent(i) {
       $('.slider').on('afterChange', function() {
@@ -64,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
         };
       });
     };  
-
+  
     // マーカーにクリックイベントを追加
     function markerEvent(i) {
       marker[i].addListener('click', function() { // マーカーをクリックしたとき
@@ -76,5 +101,14 @@ document.addEventListener('DOMContentLoaded', function(){
         currentInfoWindow = infoWindow[i];
       });
     };
+
+    function after_geocode(){
+      myLatLng = latLng[0];//最初の住所を地図の中心点に設定
+      var opt = {
+          center: myLatLng, // 地図の中心を指定
+          zoom: 10 // 地図のズームを指定
+      };//地図作成のオプションのうちcenterとzoomは必須
+      map.setOptions(opt);///オプションをmapにセット
+    };//function after_geocode終了
   };
 });
