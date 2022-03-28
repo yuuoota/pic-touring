@@ -1,0 +1,12 @@
+<main class="main">
+  <div class="inner">
+    <% if user_signed_in? %>
+      <div class="greeting">
+        <%= "検索結果" %>
+      </div>
+    <% end %>
+    <div class="card__wrapper">
+      <%= render partial: 'post', collection: @posts %>
+    </div>
+  </div>
+</main>

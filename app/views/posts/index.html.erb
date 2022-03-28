@@ -5,6 +5,11 @@
         <%= "ようこそ"%><%= current_user.nickname %><%= "さん" %>
       </div>
     <% end %>
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "スポット名で検索", id: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+      <div id="search-result"></div>
+    <% end %>
     <div class="card__wrapper">
       <%= render partial: 'post', collection: @posts %>
     </div>
