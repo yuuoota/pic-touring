@@ -1,6 +1,12 @@
 <main class="main">
   <div class="inner">
     <div class="prototype__wrapper">
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", edit_post_path(@post.id), class: :prototype__btn %>
+          <%= link_to "削除する", post_path(@post.id), method: :delete, class: :prototype__btn %>
+        </div>
+      <% end %>
       <div class = pic__map>
         <div class="slider">
           <% @post.images.each do |image| %>
@@ -21,12 +27,23 @@
           <% end %>
         </div>
       </div>
-      <% if user_signed_in? && current_user.id == @post.user_id %>
-        <div class="prototype__manage">
-          <%= link_to "編集する", edit_post_path(@post.id), class: :prototype__btn %>
-          <%= link_to "削除する", post_path(@post.id), method: :delete, class: :prototype__btn %>
+      <div id="comments">
+        <h4>＜コメント一覧＞</h4>
+        <% @post.comments.each do |comment| %>
+        <div class="comment">
+          <p class="user-info"><%= comment.user.nickname %>: </p>
+          <p><%= comment.text%></p>
         </div>
-      <% end %>
+        <% end %>
+      </div>
+      <div class="comment-form">
+        <% if user_signed_in? %>
+          <%= form_with model: [@post, @comment], id: "comment-form", local: true do |f| %>
+            <%= f.text_area :text , class: "comment-text"%>
+            <%= f.submit "コメントをする", class: "comment-submit" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </main>
