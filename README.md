@@ -58,3 +58,15 @@ Rails 6.0.4.6
 - belongs_to :post
 - belongs_to :spot
 
+## Comments
+
+|Column        |Type      |Options                       |
+|--------------|----------|------------------------------|
+|text          |text      |null: false                   |
+|user          |references|null: false, foreign_key: true|
+|post          |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :post
+

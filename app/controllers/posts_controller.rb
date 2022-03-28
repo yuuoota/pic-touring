@@ -19,6 +19,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+    @comment = Comment.new
     gon.lat_lng = @post.images.map do |image|
       {"lat" => image.metadata["latitude"], "lng" => image.metadata["longitude"]}
     end

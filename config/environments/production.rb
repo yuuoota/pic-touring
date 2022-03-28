@@ -89,6 +89,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  ActionCable.server.config.disable_request_forgery_protection = true
+  config.action_cable.url = "wss://pic-touring.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://pic-touring.herokuapp.com', 'http://pic-touring.herokuapp.com']
+
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
