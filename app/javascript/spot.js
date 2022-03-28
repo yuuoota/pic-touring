@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const spotNameInput = document.querySelector("#post_spot");
+  const spotNameInput = document.querySelector("#search-input");
   if (spotNameInput){
-    const inputElement = document.getElementById("post_spot");
+    const inputElement = document.getElementById("search-input");
     inputElement.addEventListener("input", () => {
-      const keyword = document.getElementById("post_spot").value;
+      const keyword = document.getElementById("search-input").value;
       const XHR = new XMLHttpRequest();
-      XHR.open("GET", `/posts/search/?keyword=${keyword}`, true);
+      XHR.open("GET", `/posts/searching/?keyword=${keyword}`, true);
       XHR.responseType = "json";
       XHR.send();
       XHR.onload = () => {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             searchResult.appendChild(childElement);
             const clickElement = document.getElementById(spot.id);
             clickElement.addEventListener("click", () => {
-              document.getElementById("post_spot").value = clickElement.textContent;
+              document.getElementById("search-input").value = clickElement.textContent;
               clickElement.remove();
             });
           });
