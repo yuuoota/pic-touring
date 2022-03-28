@@ -38,7 +38,7 @@
       </div>
       <div class="comment-form">
         <% if user_signed_in? %>
-          <%= form_with model: [@post, @comment], id: "comment-form", local: true do |f| %>
+          <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
             <%= f.text_area :text , class: "comment-text"%>
             <%= f.submit "コメントをする", class: "comment-submit" %>
           <% end %>
