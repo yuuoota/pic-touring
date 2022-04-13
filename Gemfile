@@ -62,3 +62,5 @@ gem 'pry-rails'
 gem 'exifr'
 
 gem 'gon'
+
+gem "aws-sdk-s3", require: false
