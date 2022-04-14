@@ -1,16 +1,34 @@
 # README
 
-# Pic-Touring
- 
+# アプリ名
+
+## Pic-Touring
+<br>
+
 # 概要
- 
-ツーリングしたときに撮影した写真を投稿することができます。
-投稿した写真には位置情報をつけておくとより便利です。アプリで投稿した写真を開くと撮影した位置がマップ上に自動で表示されます。
- 
+バイク乗り用SNSを目標とした、写真投稿アプリです。
+
+# 本番環境
+### URL
+https://pic-touring.herokuapp.com/  
+### テスト用アカウント  
+Email : sample1@sample1.com  
+Password : sample1
+
 # 開発環境
- 
-ruby 2.6.5
-Rails 6.0.4.6
+### バックエンド
+ruby 2.6.5 / Rails 6.0.4.6
+### フロントエンド
+html / css / Javascript / JQuery / Ajax
+### データベース
+MySQL / SequelPro
+### インフラ
+AWS(EC2)
+### ソース管理
+GitHub / GitHubDesktop
+### エディタ
+VSCode
+
  
 # テーブル設計
 

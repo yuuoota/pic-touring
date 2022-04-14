@@ -38,8 +38,7 @@ a {
 
 .header {
   background-color: #EEFFFF;
-  margin-bottom: 10px;
-  padding: 20px 0;
+  padding: 15px 0 10px;
 
 }
 .inner {
@@ -65,7 +64,7 @@ a {
   color: #4689FF;
   text-decoration: none;
   user-select: none;
-  border: 1px #4689FF solid;
+  border: 2px #4689FF solid;
   border-radius: 3px;
   transition: 0.4s ease;
 }
@@ -141,6 +140,12 @@ a {
   cursor: pointer;
   margin-bottom: 5px;
 }
+.search-form{
+  margin-bottom: 10px;
+}
+#search-input{
+  width: 50%;
+}
 
 #search-result{
   width: 30%;
@@ -157,7 +162,7 @@ a {
 /* メイン */
 
 .greeting{
-  margin-bottom: 20px;
+  margin: 10px 0px 10px;
 }
 .greeting__link{
   text-decoration: underline;
@@ -175,9 +180,7 @@ a {
 }
 .card {
   width: calc((100% - 50px) / 3);
-}
-.card__img {
-  margin-bottom: 16px;
+  margin: 0px 0px 20px;
 }
 .card__title {
   display: block;
@@ -233,10 +236,10 @@ a {
   color: #999;
   text-decoration: none;
   user-select: none;
-  border: 1px #999 solid;
+  border: 2px #999 solid;
   border-radius: 3px;
   transition: 0.4s ease;
-  margin: 0 4px;
+  margin: 0 10px;
 }
 .prototype__btn:hover{
   color: #fff;
@@ -281,15 +284,18 @@ a {
 .comment-form{
   display: flex;
 }
-
+#comment-form{
+  width: 100%;
+}
 .comment-text{
   display: block;
+  width: 100%;
   margin-top: 20px;
 }
 
 .comment-submit{
   display: block;
-  margin-top: 20px;
+  margin: 5px 0 10px;
 }
 
 .comment{
@@ -369,14 +375,39 @@ a {
  /* スマホ表示 */
 @media (max-width: 599px) {
   .logo {
-    width: 120px;
+    width: 40px;
+    height: 30px;
+  }
+  .app_title {
+    font-size: 1.5em;
+  }
+  .nav__btn{
+    font-size: 0.6em;
   }
   .page-heading {
     font-size: 20px;
   }
-  .card {
+  .nav {
     width: 100%;
-    margin-bottom: 60px;
+    display: block;
+  }
+
+  .nav__left{
+    margin-bottom: 5px;
+  }
+  .nav__right{
+    text-align: center;
+  }
+  .card__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: auto;
+  }
+  .card {
+    width: calc((100% - 10px) / 3);
+    margin-bottom: 5px;
   }
   .card__title {
     font-size: 18px;
@@ -388,6 +419,21 @@ a {
     width: 100%;
   }
   .table{
+    width: 100%;
+  }
+  /* 詳細ページ */
+  .prototype__wrapper{
+    min-height: calc(100vh - 161px);
+  }
+  .pic__map{
+    display: block;
+    margin-top: 10px;
+  }
+  .slider{
+    width: 100%;
+    }
+  #map {
+    height: 350px;
     width: 100%;
   }
 }
