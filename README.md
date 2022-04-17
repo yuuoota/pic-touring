@@ -21,25 +21,31 @@ Password : sample1
 ツーリングに行くと、ふとした時に名もない道で写真を撮影することが頻繁にあります。後で見返したときに写真の場所が一目でわかるような形で記録し、他のライダーと共有できるアプリがあればという思いで開発を始めました。
 # DEMO
 ## ◆トップページ
+
 [![Image from Gyazo](https://i.gyazo.com/8359c84b581748bcc2a833dc05361eaf.gif)](https://gyazo.com/8359c84b581748bcc2a833dc05361eaf)
 
 投稿写真が一覧で表示されます。また、ハッシュタグを検索できます。検索欄に文字を入力するとDBに保存されているハッシュタグがインクリメンタルサーチされます。
 ## ◆写真投稿画面
+
 [![Image from Gyazo](https://i.gyazo.com/f6e5936a68440fa171ca2528fe1ef783.gif)](https://gyazo.com/f6e5936a68440fa171ca2528fe1ef783)
 
 コメント入力、写真選択(最大5枚)、ハッシュタグの入力をして投稿できます。投稿に成功すると、１枚目の写真がトップページに表示されます。
 ## ◆詳細画面
+
 [![Image from Gyazo](https://i.gyazo.com/eecc9b602687ecd28c9ad888cc319e2d.gif)](https://gyazo.com/eecc9b602687ecd28c9ad888cc319e2d)
 
 トップページで写真をクリックすると、詳細画面に遷移します。投稿写真に位置情報が含まれていれば、その位置が地図上にマーカーで表示されます。写真とマーカーはそれぞれ対応しており、写真の撮影位置が一目でわかるようになっています。
 #### ●ハッシュタグ機能
+
 [![Image from Gyazo](https://i.gyazo.com/6776af6c0403ba4a7ba35aefa9ae7243.gif)](https://gyazo.com/6776af6c0403ba4a7ba35aefa9ae7243)
 
 投稿写真に位置情報が含まれない場合は、ハッシュタグをジオコーディングした結果が地図上にマーカーで表示されるようになっています。
 ハッシュタグをクリックすると、同じハッシュタグの投稿写真が表示されます
 #### ●コメント機能
+
 [![Image from Gyazo](https://i.gyazo.com/41fb8433024c12a5be4878f8a16ec963.gif)](https://gyazo.com/41fb8433024c12a5be4878f8a16ec963)
 #### ●編集機能
+
 [![Image from Gyazo](https://i.gyazo.com/3ebb48f1a3b010cd38d9d36ac4074b6d.gif)](https://gyazo.com/3ebb48f1a3b010cd38d9d36ac4074b6d)
 
 編集画面にて、画像を選択しないまま保存した場合、画像は元のままで変更されない仕様になっています。 
@@ -48,6 +54,7 @@ Password : sample1
 - SNS機能とは別に、エンジンオイルやフィルターの交換といった定期的に必要なメンテナンスの記録、管理をする機能
 - スマートフォンやタブレットでの利用を想定しているため、レスポンシブデザインの実装
 ◇レスポンシブデザインのイメージ◇
+
 [![Image from Gyazo](https://i.gyazo.com/1de30d530c5405394bcd0e0f0608040f.gif)](https://gyazo.com/1de30d530c5405394bcd0e0f0608040f)
 
 # 開発環境
