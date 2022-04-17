@@ -8,7 +8,7 @@
 
 バイク乗りのための、SNS機能やバイクのメンテナンス管理ができるアプリを目標として、勉強しながらコツコツと開発しています。(現在はSNS機能のみです)
 
-[![Image from Gyazo](https://i.gyazo.com/1590a68b579b37d6eaeea091f33d62ea.png)](https://gyazo.com/1590a68b579b37d6eaeea091f33d62ea)
+[![Image from Gyazo](https://i.gyazo.com/8359c84b581748bcc2a833dc05361eaf.gif)](https://gyazo.com/8359c84b581748bcc2a833dc05361eaf)
 
 # 本番環境
 ### ◆URL
@@ -55,7 +55,7 @@ Password : sample1
 - スマートフォンやタブレットでの利用を想定しているため、レスポンシブデザインの実装
 <br>
 <br>
-◇レスポンシブデザインのイメージ◇
+◇スマートフォンでの利用イメージ◇
 
 [![Image from Gyazo](https://i.gyazo.com/1de30d530c5405394bcd0e0f0608040f.gif)](https://gyazo.com/1de30d530c5405394bcd0e0f0608040f)
 
