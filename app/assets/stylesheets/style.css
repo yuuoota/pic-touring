@@ -91,7 +91,13 @@ a {
 }
 
 .form__text {
-  width: 50%;
+  width: 80%;
+}
+#post_text{
+  height: 100px;
+}
+#post_spot_spot_name{
+  height: 25px;
 }
 
 .field{
@@ -281,6 +287,9 @@ a {
 .info_window {
   font-weight: bold;
 }
+#comment_title{
+  margin: 5px 0;
+}
 .comment-form{
   display: flex;
 }
@@ -290,7 +299,7 @@ a {
 .comment-text{
   display: block;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .comment-submit{
